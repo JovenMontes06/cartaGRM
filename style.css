@@ -188,6 +188,6 @@ div.hoja.mostrar{
     transform: translateY(calc(-100% - 50vh)); /* Mueve el elemento fuera de la pantalla y hacia arriba */
 }
 .bajar{
-    transform: translateY(300%);
+    transform: translateY(200%);
 }
 
