@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+:root{
+    --tamanoPegatina: 50px;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #FFE6EB;
+    opacity: 1;
+    background-image:  linear-gradient(135deg, #FC8987 25%, transparent 25%), linear-gradient(225deg, #FC8987 25%, transparent 25%), linear-gradient(45deg, #FC8987 25%, transparent 25%), linear-gradient(315deg, #FC8987 25%, #FFE6EB 25%);
+    background-position:  40px 0, 40px 0, 0 0, 0 0;
+    background-size: 80px 80px;
+    background-repeat: repeat;
+    height: auto;
+    width: 100vw;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin: 0;
+    padding: 1rem;
+}
+div.carta{
+    position: relative;
+    margin: auto;
+    width: 50vw;
+    height: 50vh;
+    background-color: #F8AFA6;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FC8987;
+}
+div.pico1, div.pico2{
+    width: 0;
+    height: 0;
+    border-left: 24.5vw solid transparent;  /* Parte izquierda del triángulo */
+    border-right: 24.5vw solid transparent;  /* Parte derecha del triángulo */
+    position: absolute;
+    left: 50%;
+    transform-origin: top center;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease, border-top-color 0.3s ease;  /* Suaviza la animación */
+}
+div.pico1.levantado, div.borde1.levantado {
+    transform-origin: top center;
+    transform: translateX(-50%) rotateX(180deg);  /* Levanta el pico */
+    border-top-color: #FC8987;  /* Cambia el color del pico cuando se levanta */
+    z-index: 0;
+}
+div.borde1, div.borde2{
+    width: 0;
+    height: 0;
+    border-left: 24.75vw solid transparent;  /* Parte izquierda del triángulo */
+    border-right: 24.75vw solid transparent;  /* Parte derecha del triángulo */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: top center;
+    transition: transform 0.3s ease, border-top-color 0.3s ease;  /* Suaviza la animación */
+}
+div.pico1{
+    top: 0.25vh;
+    z-index: 1;
+    border-top: 23vh solid #F8AFA6;  /* El color de la carta */
+}div.pico1{z-index: 10;border-top: 25vh solid #F8AFA6;}
+div.pico2{
+    border-bottom: 29vh solid #F8AFA6;  /* El color de la carta */
+    bottom: 0px;
+    z-index: 7;
+}
+div.pico4{
+    width: 0px; height: 0px;
+    border-top: 24.25vh solid transparent;
+    border-bottom: 24.25vh solid transparent;
+    border-left: 27vw solid #F8AFA6;
+    position: absolute;
+    left:0px;
+    z-index: 3;
+}
+div.borde4{
+    width: 0px; height: 0px;
+    border-top: 24.5vh solid transparent;
+    border-bottom: 24.5vh solid transparent;
+    border-left: 27.5vw solid #FC8987;
+    position: absolute;
+    left:0px;
+    z-index: 2;
+}
+div.pico5{
+    width: 0px; height: 0px;
+    border-top: 24.25vh solid transparent;
+    border-bottom: 24.25vh solid transparent;
+    border-right: 27vw solid #F8AFA6;
+    position: absolute;
+    right:0px;
+    z-index: 3;
+}
+div.borde5{
+    width: 0px; height: 0px;
+    border-top: 24.5vh solid transparent;
+    border-bottom: 24.5vh solid transparent;
+    border-right: 27.5vw solid #FC8987;
+    position: absolute;
+    right:0px;
+    z-index: 2;
+}
+
+div.borde1{
+    border-top: 23.5vh solid #FC8987;  /* El color de la carta */
+    top: 0.25vh;
+    z-index: 0;
+}div.borde1{z-index: 9;border-top: 25.5vh solid #FC8987;}
+div.borde2{
+    border-bottom: 29.5vh solid #FC8987;  /* El color de la carta */
+    bottom: 0px;
+    z-index: 6;
+}
+div.pegatina{
+    width: var(--tamanoPegatina);
+    height: var(--tamanoPegatina);
+    background-color: #FC8987;
+    position: relative;
+    transform: rotate(-45deg) scale(1);
+    margin: 50px;
+    transition: 1s ease all;
+    z-index: 10;
+}
+div.pegatina::after, div.pegatina::before{
+    content: "";
+    width: inherit;
+    height: inherit;
+    background-color: #FC8987;
+    border-radius: 50%;
+    position: absolute;
+}
+div.pegatina::before {
+    top: calc((var(--tamanoPegatina)/-2));
+    left: 0;
+}
+div.pegatina::after {
+    left: calc((var(--tamanoPegatina)/2));
+    top: 0;
+}
+div.pegatina:hover {
+    animation: latido 0.5s infinite;
+}
+.pegatina.quitar {
+    transform: rotate(0deg) translateY(-100px) scale(0);
+    opacity: 0;
+}
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(-45deg);
+    }
+}
+
+div.hoja{
+    position: absolute;
+    width: 40vw;
+    height: auto;
+    opacity: 1;
+    background-color: #FFE6EB;
+    background-size: 20px 20px;
+    background-image:  repeating-linear-gradient(0deg, #FC8987, #FC8987 1px, #FFE6EB 1px, #FFE6EB);
+    
+    top: 100%; /* Inicialmente está fuera de la vista (debajo de la carta) */
+    left: 10%;
+    border-radius: 10px;
+    opacity: 0;
+    /* transform: translateY(110%);  */
+    transition: opacity 1s ease, transform 1s ease;
+    z-index: 1;
+    /* font-family: "Monsieur La Doulaise", cursive; */
+    font-size: 1rem;
+    padding: 1rem;
+    padding-top: 1.4rem;
+    line-height: 1.25rem;
+    text-align: justify;
+}
+div.hoja.mostrar{
+    /* top: -110%; */
+    opacity: 1;
+    transform: translateY(calc(-100% - 50vh)); /* Mueve el elemento fuera de la pantalla y hacia arriba */
+}
+.bajar{
+    transform: translateY(300%);
+}
+
